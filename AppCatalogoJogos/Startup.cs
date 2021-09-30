@@ -1,4 +1,5 @@
 using AppCatalogoJogos.Controllers.V1;
+using AppCatalogoJogos.Middleware;
 using AppCatalogoJogos.Repositories;
 using AppCatalogoJogos.Services;
 using Microsoft.AspNetCore.Builder;
@@ -61,6 +62,8 @@ namespace AppCatalogoJogos
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "AppCatalogoJogos v1"));
             }
+
+            app.UseMiddleware<ExceptionMiddleware>();
 
             app.UseHttpsRedirection();
 
